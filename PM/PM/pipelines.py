@@ -29,5 +29,4 @@ class PmPipeline(object):
 
     def process_item(self, item, spider):
         self.collection.insert(dict(item))
-        log.msg("Book added to MongoDB database!", level=log.DEBUG, spider=spider)
         return item
