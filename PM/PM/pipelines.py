@@ -28,5 +28,5 @@ class PmPipeline(object):
         self.file.close()
 
     def process_item(self, item, spider):
-        self.collection.insert(dict(item))
+        self.collection.replace_one(dict(item), dict(item), True)
         return item

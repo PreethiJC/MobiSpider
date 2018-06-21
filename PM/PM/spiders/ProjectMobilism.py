@@ -18,7 +18,7 @@ class mobilism(scrapy.Spider):
         db = connection[settings['MONGODB_DB']]
         collection = db[settings['MONGODB_COLLECTION']]
         if settings['MONGODB_COLLECTION'] in db.collection_names():
-            self.first_id = collection.find_one()['_id']
+            self.first_id = collection.find_one(sort=[('_id', pymongo.DESCENDING)])['_id']
         else:
             self.first_id = 0
 
@@ -35,7 +35,7 @@ class mobilism(scrapy.Spider):
                 soup = BeautifulSoup(topic.extract(), 'html.parser')
                 link = soup.find('a')['href'][2:]
                 id = int(link.split("t=")[1].split('&')[0])
-                if id <= self.first_id:
+                if id == self.first_id:
                     raise StopIteration
                 topic_author = soup.find('a').text.rsplit('by', 1)
                 book_detail = {'_id': id,
