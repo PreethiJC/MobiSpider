@@ -1,7 +1,7 @@
 # MobiSpider
 
 ## Overview
-Scrapy Spider to scrape ebook details from Mobilism Forum. 
+Scrapy Spider to scrape ebook details from Mobilism Forum. Currently the Spider scrapes all Children/Young Adult ebook details and stores the information in Mongodb. The aim of this project is to build a book base for my personal Athenaeum.
 
 ## Execution  
 1. Change Directory to PM
